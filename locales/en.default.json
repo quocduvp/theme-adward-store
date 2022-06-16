@@ -422,5 +422,11 @@
       "copy_code_success": "Code copied successfully",
       "print_gift_card": "Print"
     }
+  },
+  "shipping": {
+    "popup": {
+      "popup_content_item_1": "The above time frame is only applied for orders to the US with standard shipping methods.",
+      "popup_content_item_2": "International orders: It may take 2-5 days longer due to the customs clearance process."
+    }
   }
 }

@@ -291,12 +291,16 @@
               </modal-opener>
               <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">{{ block.settings.text }}</a>
           {%- when 'shipping' -%}
-            <est-shipping>
-              {% render 'icon-truck' %}
-            <est-shipping>
-            <script src="{{ 'est-shipping.js' | asset_url }}" defer="defer"></script>
+            <est-shipping 
+              label="{{ block.settings.shipping_label | escape }}" 
+              popupItem1="{{ 'shipping.popup.popup_content_item_1' | t }}"
+              popupItem2="{{ 'shipping.popup.popup_content_item_2' | t }}"
+              productType="{{ product.type | escape }}"
+            >
+            </est-shipping>
+            <script src="{{ 'est-shipping.bundle.js' | asset_url }}" type="module" defer="defer"></script>
           {%- when 'share' -%}
-            <share-button id="Share-{{ section.id }}" class="share-button quick-add-hidden" {{ block.shopify_attributes }}>
+            <share-button id="Share-{{ section.id }}" class="share-button quick-add-hidden" {{ 'block.shopify_attributes' }}>
               <button class="share-button__button hidden">
                 {% render 'icon-share' %}
                 {{ block.settings.share_label | escape }}
@@ -749,7 +753,19 @@
     {
       "type": "shipping",
       "name": "t:sections.main-product.blocks.shipping.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "shipping_label",
+          "label": "t:sections.main-product.block.shipping.settings.text.label",
+          "default": "Estimated arrival"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.main-product.block.shipping.settings.popup_content_item_1.content"
+        }
+      ]
     },
     {
       "type": "custom_liquid",
