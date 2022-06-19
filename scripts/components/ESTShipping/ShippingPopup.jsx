@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { generateShippingSteps } from "./utils";
 
 const styles = {
   container: {
     position: "absolute",
     minWidth: 400,
-    background: "#fff",
+    background: "yellow",
     borderRadius: 8,
     boxShadow: "0 7px 29px 0 hsl(240deg 5% 41% / 20%)",
     padding: "10px 20px",
     zIndex: 999,
-    transform: "translate(-15%, -10%)",
+    transform: "translate(-15%, 0%)",
   },
 };
 
 const ShippingPopup = ({ popup }) => {
   const [steps, setSteps] = useState([]);
   useEffect(() => {
-    const steps = generateShippingSteps();
-    setSteps(steps);
+    setSteps([]);
   }, []);
   return (
     <div style={styles.container}>

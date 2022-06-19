@@ -1,5 +1,5 @@
 const path = require("path");
-
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
   entry: {
     "est-shipping": "./scripts/est-shipping.js",
@@ -15,19 +15,35 @@ module.exports = {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
         exclude: /node_modules/,
-        use: ['@svgr/webpack'],
+        use: ["@svgr/webpack"],
       },
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.(scss|sass)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "style-loader",
+          },
+          {
+            loader: "css-loader",
+          },
+          {
+            loader: "sass-loader",
+          },
+        ],
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js", ".jsx", ".tsx"],
+    extensions: [".ts", ".js", ".jsx", ".tsx", "scss", "sass"],
   },
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "assets"),
   },
+  plugins: [
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ["*.LICENSE.txt"],
+    }),
+  ],
 };

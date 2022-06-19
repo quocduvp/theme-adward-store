@@ -4,11 +4,11 @@ import ESTShipping from "./components/ESTShipping";
 class ESTShippingElm extends HTMLElement {
   connectedCallback() {
     const mountPoint = document.createElement("div");
-    this.attachShadow({ mode: "closed" }).appendChild(mountPoint);
+    this.appendChild(mountPoint);
     const popupItem1 = this.getAttribute("popupItem1");
     const popupItem2 = this.getAttribute("popupItem2");
+    const productType = this.getAttribute("productType");
     const label = this.getAttribute("label");
-    console.log(this.getAttribute("productType"))
     const root = ReactDOM.createRoot(mountPoint);
     root.render(
       <ESTShipping
@@ -16,6 +16,7 @@ class ESTShippingElm extends HTMLElement {
         popup={{
           contentItems: [popupItem1, popupItem2],
         }}
+        productType={productType}
       />
     );
   }

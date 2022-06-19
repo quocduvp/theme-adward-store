@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TruckComponent from "../../assets/delivery-truck.svg";
 import ShippingDate from "./ShippingDate";
 import ShippingPopup from "./ShippingPopup";
-
+import "../../est-shipping.scss"
 const styles = {
   shipping_container: {
     display: "flex",
@@ -20,10 +20,10 @@ const shipping_popup_styles = {
 };
 
 const ESTShipping = ({ label, popup }) => {
-  const [isShow, setShow] = useState(false);
+  const [isShow, setShow] = useState(true);
 
   return (
-    <>
+    <div style={shipping_popup_styles}>
       <div style={{ marginTop: 8 }}></div>
       <div style={styles.shipping_container}>
         <TruckComponent style={styles.icon} />
@@ -31,10 +31,10 @@ const ESTShipping = ({ label, popup }) => {
           {label}: <ShippingDate handleShowPopup={setShow} popup={popup} />
         </div>
       </div>
-      <div style={shipping_popup_styles}>
+  
         {isShow ? <ShippingPopup popup={popup} /> : null}
-      </div>
-    </>
+      {/* </div> */}
+    </div>
   );
 };
 
