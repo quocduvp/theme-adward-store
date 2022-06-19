@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ShippingStep from "./ShippingStep";
 
 const styles = {
   container: {
@@ -20,7 +21,9 @@ const ShippingPopup = ({ popup }) => {
   }, []);
   return (
     <div style={styles.container}>
-      <div id="step"></div>
+      <div id="step">
+        <ShippingStep/>
+      </div>
       <div id="content">
         <ul>
           {popup.contentItems.map((item, index) => {

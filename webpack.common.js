@@ -1,5 +1,5 @@
 const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
 module.exports = {
   entry: {
     "est-shipping": "./scripts/est-shipping.js",
@@ -41,9 +41,5 @@ module.exports = {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "assets"),
   },
-  plugins: [
-    new CleanWebpackPlugin({
-      cleanAfterEveryBuildPatterns: ["*.LICENSE.txt"],
-    }),
-  ],
+  plugins: [],
 };

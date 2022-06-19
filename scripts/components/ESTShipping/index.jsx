@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TruckComponent from "../../assets/delivery-truck.svg";
 import ShippingDate from "./ShippingDate";
 import ShippingPopup from "./ShippingPopup";
-import "../../est-shipping.scss"
+import "./stype.scss"
 const styles = {
   shipping_container: {
     display: "flex",
